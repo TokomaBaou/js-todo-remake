@@ -17,10 +17,13 @@ const onClickAdd = () => {
   const p = document.createElement("p");
   p.innerText = inputText;
 
-  //ボタンタグを生成
+  //完了ボタンタグを生成
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
-  console.log(completeButton);
+
+  //削除ボタンタグを生成
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
 
   //liタグの子要素に各要素を設定
   li.appendChild(div);
