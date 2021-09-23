@@ -5,6 +5,17 @@ const onClickAdd = () => {
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
 
+  createIncompleteList(inputText);
+};
+//共通化したい
+//未完了リストから指定の要素を削除
+// const deleteFromIncompleteList = (target) => {
+//   //完了ボタンを押したら未完了リストから削除する
+//   document.getElementById("incomplete-list").removeChild(target);
+// };
+
+//未完了リストに追加する関数
+const createIncompleteList = (text) => {
   //li生成
   const li = document.createElement("li");
   li.className = "list";
@@ -15,7 +26,7 @@ const onClickAdd = () => {
 
   //p生成
   const p = document.createElement("p");
-  p.innerText = inputText;
+  p.innerText = text;
 
   //完了ボタンタグを生成
   const completeButton = document.createElement("button");
@@ -50,7 +61,9 @@ const onClickAdd = () => {
 
       //テキストを取得
       const text = backButton.closest("li").firstElementChild.innerText;
-      console.log(text);
+
+      //戻すボタンのクリック時に未完了リストに追加する関数を発動してtextを引数で渡す
+      createIncompleteList(text);
     });
 
     //liタグの子要素に各要素を設定
@@ -71,13 +84,6 @@ const onClickAdd = () => {
     const deleteTarget = deleteButton.closest("li");
     document.getElementById("incomplete-list").removeChild(deleteTarget);
   });
-
-  //共通化したい
-  //未完了リストから指定の要素を削除
-  // const deleteFromIncompleteList = (target) => {
-  //   //完了ボタンを押したら未完了リストから削除する
-  //   document.getElementById("incomplete-list").removeChild(target);
-  // };
 
   //liタグの子要素に各要素を設定
   li.appendChild(div);
