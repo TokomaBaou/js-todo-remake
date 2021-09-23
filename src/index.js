@@ -17,10 +17,6 @@ const onClickAdd = () => {
   const p = document.createElement("p");
   p.innerText = inputText;
 
-  //戻すボタンタグを生成
-  const backButton = document.createElement("button");
-  backButton.innerText = "戻す";
-
   //完了ボタンタグを生成
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
@@ -36,12 +32,26 @@ const onClickAdd = () => {
     // console.log(text);
 
     //li以下を初期化
+    //最初の追加ボタンを押した挙動と戻るボタンを押した時の挙動を揃えるために上記のような実装をした
     addTarget.textContent = null;
 
     //liタグを生成
     const li = document.createElement("li");
     //liにtextを設定
     li.innerText = text;
+
+    //戻すボタンタグを生成
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+    backButton.addEventListener("click", () => {
+      //押された戻すボタンの親タグを完了リストから削除
+      const deleteTarget = backButton.closest("li");
+      document.getElementById("complete-list").removeChild(deleteTarget);
+
+      //テキストを取得
+      const text = backButton.closest("li").firstElementChild.innerText;
+      console.log(text);
+    });
 
     //liタグの子要素に各要素を設定
     addTarget.appendChild(li);
