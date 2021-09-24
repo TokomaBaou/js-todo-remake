@@ -7,12 +7,12 @@ const onClickAdd = () => {
 
   createIncompleteList(inputText);
 };
-//共通化したい
-//未完了リストから指定の要素を削除
-// const deleteFromIncompleteList = (target) => {
-//   //完了ボタンを押したら未完了リストから削除する
-//   document.getElementById("incomplete-list").removeChild(target);
-// };
+// 共通化したい
+// 未完了リストから指定の要素を削除
+const deleteFromIncompleteList = (target) => {
+  //完了ボタンを押したら未完了リストから削除する
+  document.getElementById("incomplete-list").removeChild(target);
+};
 
 //未完了リストに追加する関数
 const createIncompleteList = (text) => {
